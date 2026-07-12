@@ -1,54 +1,744 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Myesha Shipman</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Myesha Shipman's professional portfolio in cybersecurity, governance, risk and compliance, legal operations, and emergency management." />
+  <title>Myesha Shipman | Cybersecurity, Risk & Legal Operations</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f5f5f5;
-        }
+  <style>
+    :root {
+      --bg: #050508;
+      --bg-soft: #0b0b12;
+      --panel: rgba(22, 18, 26, 0.82);
+      --panel-strong: rgba(27, 22, 31, 0.94);
+      --text: #fff9fc;
+      --muted: #c9c0c8;
+      --pink: #ff4fa3;
+      --pink-soft: #ff8bc3;
+      --pink-dark: #b91768;
+      --line: rgba(255, 79, 163, 0.28);
+      --white-line: rgba(255,255,255,0.1);
+      --shadow: 0 26px 80px rgba(0,0,0,0.55);
+    }
 
-        h1 {
-            font-size: 48px;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        p {
-            font-size: 22px;
-            color: #555;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .button {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 24px;
-            background-color: #CCCCFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,79,163,0.12), transparent 24%),
+        radial-gradient(circle at 82% 22%, rgba(255,79,163,0.08), transparent 20%),
+        linear-gradient(180deg, #030305 0%, #08080d 55%, #050508 100%);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        .button:hover {
-            background-color: #004c99;
-        }
-    </style>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+    }
+
+    #code-rain {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.44;
+      transition: opacity 2s ease;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 38px));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 30;
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(3,3,5,0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 38px));
+      min-height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .monogram {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--pink);
+      text-shadow: 0 0 20px rgba(255,79,163,0.65);
+    }
+
+    .brand-name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+    }
+
+    .brand-name span {
+      color: var(--pink-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink-soft);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 130px 0 80px;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 4%;
+      z-index: -1;
+      width: min(820px, 92vw);
+      height: 420px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(255,79,163,0.12), transparent 60%);
+      filter: blur(12px);
+    }
+
+    .eyebrow {
+      margin-bottom: 20px;
+      color: var(--pink-soft);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 8vw, 7rem);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    h1 span {
+      color: var(--pink-soft);
+      text-shadow: 0 0 32px rgba(255,79,163,0.3);
+    }
+
+    .pink-line {
+      width: 105px;
+      height: 3px;
+      margin: 28px auto;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+      box-shadow: 0 0 16px rgba(255,79,163,0.65);
+    }
+
+    .roles {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      line-height: 1.9;
+      text-transform: uppercase;
+    }
+
+    .roles span {
+      color: var(--pink);
+      margin: 0 10px;
+    }
+
+    .value-statement {
+      max-width: 760px;
+      margin: 30px auto 0;
+      color: #eee8ec;
+      font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-width: 205px;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+    }
+
+    .button-primary {
+      color: #170710;
+      background: linear-gradient(135deg, #ff81bc, var(--pink));
+      box-shadow: 0 15px 38px rgba(255,79,163,0.24);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--pink);
+      color: var(--text);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .scroll-note {
+      margin-top: 78px;
+      color: var(--pink-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+      display: block;
+      margin-top: 10px;
+      color: var(--pink);
+      font-size: 1.6rem;
+      animation: bounce 1.8s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .about-section {
+      padding: 90px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.7fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .section-kicker {
+      margin-bottom: 14px;
+      color: var(--pink-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-copy h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .about-copy h2 span {
+      color: var(--pink-soft);
+    }
+
+    .about-copy p {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .signature {
+      margin-top: 28px;
+      color: var(--pink-soft);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-style: italic;
+    }
+
+    .small-link {
+      display: inline-flex;
+      margin-top: 28px;
+      padding: 15px 22px;
+      border: 1px solid var(--pink);
+      color: var(--text);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 310px;
+      padding: 28px 24px;
+      border: 1px solid var(--white-line);
+      border-radius: 6px;
+      background:
+        linear-gradient(180deg, rgba(255,79,163,0.07), transparent 30%),
+        var(--panel);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255,79,163,0.45);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 26px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--pink-soft);
+      font-size: 1.55rem;
+      box-shadow: 0 0 24px rgba(255,79,163,0.12);
+    }
+
+    .service-card h3 {
+      min-height: 52px;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .card-line {
+      width: 54px;
+      height: 3px;
+      margin-top: 28px;
+      background: var(--pink);
+      box-shadow: 0 0 14px rgba(255,79,163,0.6);
+    }
+
+    .traits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 90px 0 70px;
+      border: 1px solid var(--line);
+      background: rgba(24,18,28,0.72);
+    }
+
+    .trait {
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .trait + .trait {
+      border-left: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .trait .trait-icon {
+      margin-bottom: 14px;
+      color: var(--pink-soft);
+      font-size: 1.8rem;
+    }
+
+    .trait h4 {
+      color: var(--pink-soft);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .trait p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 25px 0 45px;
+      color: #9f949c;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 940px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: auto;
+      }
+
+      .traits {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .trait:nth-child(3) {
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.09);
+      }
+
+      .trait:nth-child(4) {
+        border-top: 1px solid rgba(255,255,255,0.09);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand-name {
+        font-size: 0.78rem;
+        letter-spacing: 0.17em;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        display: none;
+        width: 100%;
+        padding: 24px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(3,3,5,0.98);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .roles {
+        font-size: 0.72rem;
+      }
+
+      .roles span {
+        display: none;
+      }
+
+      .traits {
+        grid-template-columns: 1fr;
+      }
+
+      .trait + .trait,
+      .trait:nth-child(3),
+      .trait:nth-child(4) {
+        border-left: 0;
+        border-top: 1px solid rgba(255,255,255,0.09);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      #code-rain {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <canvas id="code-rain" aria-hidden="true"></canvas>
 
-    <h1>MYESHA SHIPMAN</h1>
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="monogram">MS</span>
+        <span class="brand-name">MYESHA <span>SHIPMAN</span></span>
+      </a>
 
-    <p>Cybersecurity | Governance, Risk & Compliance | Legal Operations | Emergency Management</p>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
 
-    <br>
+      <div class="nav-links" id="navLinks">
+        <a href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <a class="button" href="about.html">About</a>
-    <a class="button" href="resume.html">Resume</a>
-    <a class="button" href="portfolio.html">Portfolio</a>
-    <a class="button" href="blog.html">Blog</a>
-    <a class="button" href="contact.html">Contact</a>
+  <main>
+    <section class="hero page-shell">
+      <div>
+        <p class="eyebrow">Welcome to my portfolio</p>
 
+        <h1>MYESHA <span>SHIPMAN</span></h1>
+
+        <div class="pink-line"></div>
+
+        <p class="roles">
+          Cybersecurity <span>|</span>
+          Governance, Risk & Compliance <span>|</span>
+          Legal Operations <span>|</span>
+          Emergency Management
+        </p>
+
+        <p class="value-statement">
+          Helping organizations strengthen security, reduce risk, improve compliance, and build more resilient operations.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="portfolio.html">Explore My Work <span>→</span></a>
+          <a class="button button-secondary" href="contact.html">Contact Me <span>→</span></a>
+        </div>
+
+        <p class="scroll-note">
+          Scroll to discover
+          <span class="scroll-arrow">⌄</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="page-shell about-grid">
+        <div class="about-copy">
+          <p class="section-kicker">Who I am</p>
+          <h2>Driven by purpose.<br><span>Focused on impact.</span></h2>
+
+          <p>
+            I combine experience in cybersecurity, education, compliance, legal studies, and emergency response to deliver practical solutions that protect people, data, and organizations.
+          </p>
+
+          <div class="signature">Myesha Shipman</div>
+
+          <a class="small-link" href="about.html">Learn more about me →</a>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="icon">◈</div>
+            <h3>Cybersecurity</h3>
+            <p>Secure systems. Protect data. Strengthen resilience.</p>
+            <div class="card-line"></div>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">✓</div>
+            <h3>Governance & Compliance</h3>
+            <p>Implement frameworks. Support compliance. Manage risk.</p>
+            <div class="card-line"></div>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">⚖</div>
+            <h3>Legal Operations & Risk Management</h3>
+            <p>Bridge legal and business objectives. Improve operations. Reduce exposure.</p>
+            <div class="card-line"></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="page-shell">
+        <section class="traits" aria-label="Professional values">
+          <article class="trait">
+            <div class="trait-icon">◇</div>
+            <h4>Educator</h4>
+            <p>Leading and mentoring future professionals.</p>
+          </article>
+
+          <article class="trait">
+            <div class="trait-icon">◈</div>
+            <h4>Risk Minded</h4>
+            <p>Identifying threats and reducing impact.</p>
+          </article>
+
+          <article class="trait">
+            <div class="trait-icon">◎</div>
+            <h4>Solution Focused</h4>
+            <p>Developing strategies that deliver results.</p>
+          </article>
+
+          <article class="trait">
+            <div class="trait-icon">♡</div>
+            <h4>People First</h4>
+            <p>Building trust and empowering teams.</p>
+          </article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Myesha Shipman. All rights reserved.
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", open);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const canvas = document.getElementById("code-rain");
+    const ctx = canvas.getContext("2d");
+    const characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 15;
+    let columns = 0;
+    let drops = [];
+    let animationFrame;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns = Math.floor(canvas.width / fontSize);
+      drops = Array.from({ length: columns }, () => Math.random() * -60);
+    }
+
+    function drawRain() {
+      ctx.fillStyle = "rgba(3, 3, 5, 0.11)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "rgba(255, 79, 163, 0.72)";
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = characters[Math.floor(Math.random() * characters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.977) {
+          drops[i] = 0;
+        }
+
+        drops[i] += 0.42;
+      }
+
+      animationFrame = requestAnimationFrame(drawRain);
+    }
+
+    resizeCanvas();
+    drawRain();
+    window.addEventListener("resize", resizeCanvas);
+
+    setTimeout(() => {
+      canvas.style.opacity = "0";
+      setTimeout(() => {
+        cancelAnimationFrame(animationFrame);
+        canvas.remove();
+      }, 2200);
+    }, 15000);
+  </script>
 </body>
 </html>
