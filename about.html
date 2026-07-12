@@ -1,26 +1,569 @@
-<h1>About Me</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn more about Myesha Shipman's background in cybersecurity, governance, risk, compliance, legal operations, education, and emergency management." />
+  <title>About | Myesha Shipman</title>
 
-IMG_4546.JPG
+  <style>
+    :root {
+      --bg: #050508;
+      --panel: rgba(22, 18, 26, 0.86);
+      --text: #fff9fc;
+      --muted: #c9c0c8;
+      --pink: #ff4fa3;
+      --pink-soft: #ff8bc3;
+      --line: rgba(255, 79, 163, 0.3);
+      --white-line: rgba(255,255,255,0.1);
+      --shadow: 0 26px 80px rgba(0,0,0,0.55);
+    }
 
-<p>
-Hello! My name is Myesha Shipman.
-</p>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<p>
-I am interested in cybersecurity, risk management, compliance,
-legal operations, and emergency management. I enjoy learning how
-organizations protect information, manage risk, and ensure
-business continuity.
-</p>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<p>
-This website serves as my professional portfolio where I share
-projects, research, coursework, certifications, and resources
-related to cybersecurity and governance.
-</p>
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,79,163,0.12), transparent 25%),
+        radial-gradient(circle at 82% 32%, rgba(255,79,163,0.07), transparent 22%),
+        linear-gradient(180deg, #030305 0%, #09080d 58%, #050508 100%);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-<p>
-My long-term goal is to continue developing expertise in
-technology, compliance, and law while building a career that
-helps organizations operate securely and responsibly.
-</p>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, #000, transparent 90%);
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 38px));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 30;
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(3,3,5,0.76);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 38px));
+      min-height: 78px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .monogram {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--pink);
+      text-shadow: 0 0 20px rgba(255,79,163,0.65);
+    }
+
+    .brand-name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+    }
+
+    .brand-name span {
+      color: var(--pink-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 0;
+      height: 2px;
+      background: var(--pink);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--pink-soft);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 150px 0 70px;
+    }
+
+    .page-heading {
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .page-heading p {
+      color: var(--pink-soft);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .page-heading h1 {
+      margin-top: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7vw, 6.2rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+    }
+
+    .page-heading h1 span {
+      color: var(--pink-soft);
+    }
+
+    .pink-line {
+      width: 95px;
+      height: 3px;
+      margin: 24px auto 0;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+      box-shadow: 0 0 16px rgba(255,79,163,0.65);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.4fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255,79,163,0.09), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-wrap::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      width: 90px;
+      height: 90px;
+      border-top: 2px solid var(--pink);
+      border-left: 2px solid var(--pink);
+    }
+
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -18px;
+      width: 90px;
+      height: 90px;
+      border-right: 2px solid var(--pink);
+      border-bottom: 2px solid var(--pink);
+    }
+
+    .portrait {
+      display: block;
+      width: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+      filter: contrast(1.03) saturate(0.94);
+    }
+
+    .about-card {
+      padding: clamp(30px, 5vw, 54px);
+      border: 1px solid var(--white-line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,79,163,0.06), transparent 28%),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card .kicker {
+      margin-bottom: 12px;
+      color: var(--pink-soft);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      line-height: 1.08;
+    }
+
+    .about-card h2 span {
+      color: var(--pink-soft);
+    }
+
+    .about-card p {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .focus-item {
+      padding: 18px;
+      border: 1px solid rgba(255,79,163,0.18);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .focus-item strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--pink-soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .focus-item span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #170710;
+      background: linear-gradient(135deg, #ff81bc, var(--pink));
+    }
+
+    .button-secondary {
+      border: 1px solid var(--pink);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .journey {
+      margin-top: 90px;
+      padding: clamp(30px, 5vw, 54px);
+      border: 1px solid var(--line);
+      background: rgba(19,15,22,0.7);
+    }
+
+    .journey h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 500;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .journey-item {
+      padding: 24px 20px;
+      border-left: 2px solid var(--pink);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .journey-item h3 {
+      color: var(--pink-soft);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .journey-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 25px 0 45px;
+      color: #9f949c;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 920px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-wrap {
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      .journey-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand-name {
+        font-size: 0.78rem;
+        letter-spacing: 0.17em;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        display: none;
+        width: 100%;
+        padding: 24px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(3,3,5,0.98);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .focus-grid,
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        min-height: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <span class="monogram">MS</span>
+        <span class="brand-name">MYESHA <span>SHIPMAN</span></span>
+      </a>
+
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="about.html">About</a>
+        <a href="resume.html">Resume</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <header class="page-heading">
+      <p>Get to know me</p>
+      <h1>About <span>Me</span></h1>
+      <div class="pink-line"></div>
+    </header>
+
+    <section class="about-layout">
+      <div class="portrait-wrap">
+        <img
+          class="portrait"
+          src="IMG_4546.JPG"
+          alt="Portrait of Myesha Shipman"
+        />
+      </div>
+
+      <article class="about-card">
+        <p class="kicker">Purpose, protection, and progress</p>
+
+        <h2>Hello, I’m <span>Myesha Shipman.</span></h2>
+
+        <p>
+          I am a multidisciplinary professional whose work connects cybersecurity, governance, risk and compliance, legal operations, education, and emergency management.
+        </p>
+
+        <p>
+          My experience has taught me to look beyond a single system or policy and consider the people, processes, legal responsibilities, and operational risks that affect an organization as a whole.
+        </p>
+
+        <p>
+          I created this portfolio to showcase practical projects, research, policies, coursework, professional experience, and resources that reflect how I approach complex problems: with curiosity, structure, accountability, and a commitment to protecting people and information.
+        </p>
+
+        <p>
+          My long-term goal is to continue developing at the intersection of technology, compliance, business, and law while helping organizations operate securely, responsibly, and with greater resilience.
+        </p>
+
+        <div class="focus-grid">
+          <div class="focus-item">
+            <strong>Cybersecurity</strong>
+            <span>Protecting information, systems, and organizational operations.</span>
+          </div>
+
+          <div class="focus-item">
+            <strong>Risk & Compliance</strong>
+            <span>Turning frameworks and requirements into practical controls.</span>
+          </div>
+
+          <div class="focus-item">
+            <strong>Legal Operations</strong>
+            <span>Supporting research, documentation, process improvement, and accountability.</span>
+          </div>
+
+          <div class="focus-item">
+            <strong>Emergency Management</strong>
+            <span>Preparing organizations to respond, recover, and remain resilient.</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="button button-primary" href="portfolio.html">Explore My Work</a>
+          <a class="button button-secondary" href="resume.html">View My Resume</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="journey">
+      <h2>A career built across disciplines.</h2>
+
+      <div class="journey-grid">
+        <article class="journey-item">
+          <h3>Technology</h3>
+          <p>Cybersecurity projects, technical research, policy development, and security-focused problem solving.</p>
+        </article>
+
+        <article class="journey-item">
+          <h3>Governance</h3>
+          <p>Risk analysis, compliance documentation, operational controls, and organizational accountability.</p>
+        </article>
+
+        <article class="journey-item">
+          <h3>Education</h3>
+          <p>Teaching, training, mentoring, communication, and translating complex information for different audiences.</p>
+        </article>
+
+        <article class="journey-item">
+          <h3>Law & Operations</h3>
+          <p>Legal research, issue analysis, process improvement, and a growing focus on technology and business law.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Myesha Shipman. All rights reserved.
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", open);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
